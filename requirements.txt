@@ -1,0 +1,39 @@
+# Core Data Science
+numpy
+pandas
+
+# Visualization
+matplotlib
+seaborn
+
+# Machine Learning
+scikit-learn
+
+# Gradient Boosting
+xgboost
+lightgbm
+catboost
+
+# Notebooks
+jupyterlab
+notebook
+ipykernel
+
+# Model Explainability
+shap
+
+# Hyperparameter Optimization
+optuna
+
+# Imbalanced Datasets
+imbalanced-learn
+
+# Utilities
+joblib
+tqdm
+
+# Configuration
+python-dotenv
+
+# HTTP/API
+requests
