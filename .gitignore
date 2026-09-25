@@ -2,6 +2,7 @@ venv/
 __pycache__/
 notebooks/.ipynb_checkpoints/
 src/.ipynb_checkpoints/
+.ipynb_checkpoints/
 
 *.pkl
 *.joblib
