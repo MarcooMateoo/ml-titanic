@@ -9,6 +9,8 @@
 #  c. Deck/Cabin - Common Deck by Pclass and Is_solo 
 #  d. Embarked by 'S'
 #  e. Cabin by 'Unknown'
+# Other consideration: 
+# Fare of 512 can be an outlier. Candidate for experimentation
 
 import pandas as pd
 
