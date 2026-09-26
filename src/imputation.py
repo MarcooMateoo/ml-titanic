@@ -141,7 +141,7 @@ class FillCabin(BaseEstimator, TransformerMixin):
         X['Is_solo'] = ((X['SibSp'] + X['Parch'] + 1) == 1)
         X = X.merge(self.global_stats_, on=['Pclass', 'Is_solo'], how='left')
         
-        # X['Cabin'] = X['Cabin'].where(X['Cabin'].notna(), X['Common_Deck'])
+        X['Cabin'] = X['Cabin'].where(X['Cabin'].notna(), X['Common_Deck'])
         
         X = X.drop(['Is_solo', 'Common_Deck', 'Deck'], axis = 1, errors='ignore')
         # print(X.value_counts('Cabin'))

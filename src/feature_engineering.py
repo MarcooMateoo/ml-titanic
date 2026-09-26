@@ -217,6 +217,21 @@ class FeatTicketFirstChar(BaseEstimator, TransformerMixin):
     def get_feature_names_out(self, input_features=None):
         return self.feature_names_in_
 
+# Is_adult
+class FeatIsAdult(BaseEstimator, TransformerMixin):
+    def fit(self, X, y=None):
+         # as per sklearn convention, get feature name out should return numpy list
+        curr_col = X.columns.to_numpy()
+        self.feature_names_in_ = np.append(curr_col, 'Is_adult')
+        return self
+
+    def transform(self, X):
+        X = X.copy()
+        X['Is_adult'] = (X['Age'] > 16).astype(int)
+        return X
+
+    def get_feature_names_out(self, input_features=None):
+        return self.feature_names_in_
 
 class DropColumns(BaseEstimator, TransformerMixin):
     def __init__(self, cols_to_drop):
@@ -234,3 +249,20 @@ class DropColumns(BaseEstimator, TransformerMixin):
         
     def get_feature_names_out(self, input_features=None):
         return np.asarray(self.feature_names_out_)
+
+
+class FeatInteraction(BaseEstimator, TransformerMixin):
+    def fit(self, X, y=None):
+         # as per sklearn convention, get feature name out should return numpy list
+        curr_col = X.columns.to_numpy()
+        self.feature_names_in_ = np.append(curr_col, ['Class_1_master', 'Class_3_male'])
+        return self
+
+    def transform(self, X):
+        X = X.copy()
+        X['Class_1_master'] = ((X['Pclass'] == 1) & (X['Title'] == 'Master'))
+        X['Class_3_male'] = ((X['Sex'] == 'male') & (X['Pclass'] == 3))
+        return X
+
+    def get_feature_names_out(self, input_features=None):
+        return self.feature_names_in_
