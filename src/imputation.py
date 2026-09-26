@@ -130,7 +130,7 @@ class FillCabin(BaseEstimator, TransformerMixin):
         X['Deck'] = X['Cabin'].str[0]
 
         self.global_stats_ = X.groupby(['Pclass', 'Is_solo'])['Deck'].agg(lambda X: X.mode()[0]).to_frame(name="Common_Deck")
-
+        
         # as per sklearn convention, get feature name out should return numpy list
         self.feature_names_in_ = X.columns.to_numpy()
         return self
@@ -143,7 +143,7 @@ class FillCabin(BaseEstimator, TransformerMixin):
         
         # X['Cabin'] = X['Cabin'].where(X['Cabin'].notna(), X['Common_Deck'])
         
-        # X = X.drop(['Is_solo', 'Common_Deck', 'Deck'], axis = 1, errors='ignore')
+        X = X.drop(['Is_solo', 'Common_Deck', 'Deck'], axis = 1, errors='ignore')
         # print(X.value_counts('Cabin'))
         # as per sklearn convention, get feature name out should return numpy list
         self.feature_names_in_ = X.columns.to_numpy()

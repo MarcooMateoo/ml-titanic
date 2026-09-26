@@ -155,7 +155,7 @@ class FeatDeckMissing(BaseEstimator, TransformerMixin):
     def transform(self, X):
         X = X.copy()
         
-        X['Is_deck_missing'] = (X['Cabin'].isna()) | (X['Deck'] == 'U')
+        X['Deck_missing'] = (X['Cabin'].isna()) | (X['Deck'] == 'U')
         return X
 
     def get_feature_names_out(self, input_features=None):
@@ -201,7 +201,7 @@ class FeatIsTicketNum(BaseEstimator, TransformerMixin):
     def get_feature_names_out(self, input_features=None):
         return self.feature_names_in_
 
-# Ticket_first_char
+# Ticket_char_0
 class FeatTicketFirstChar(BaseEstimator, TransformerMixin):
     def fit(self, X, y=None):
          # as per sklearn convention, get feature name out should return numpy list
@@ -211,8 +211,26 @@ class FeatTicketFirstChar(BaseEstimator, TransformerMixin):
 
     def transform(self, X):
         X = X.copy()
-        df['Ticket_str_0'] = df['Ticket'].str[0]
+        X['Ticket_char_0'] = X['Ticket'].str[0]
         return X
 
     def get_feature_names_out(self, input_features=None):
         return self.feature_names_in_
+
+
+class DropColumns(BaseEstimator, TransformerMixin):
+    def __init__(self, cols_to_drop):
+        self.cols_to_drop = cols_to_drop
+        
+    def fit(self, X, y=None):
+        self.feature_names_out_ = np.array([c for c in X.columns if c not in self.cols_to_drop])
+        return self
+        
+    def transform(self, X):
+        X = X.copy()
+        X = X.drop(labels = self.cols_to_drop, errors='ignore', axis = 1)
+        
+        return X
+        
+    def get_feature_names_out(self, input_features=None):
+        return np.asarray(self.feature_names_out_)
