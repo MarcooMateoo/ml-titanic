@@ -1,85 +1,80 @@
 Model,Algo,Description,Mean,Std,Kaggle Score
-V_1,LR,"{'impute': Pipeline(steps=[('impute_fare',
-                 ImputeByGroup(col_to_impute='Fare', group_by_col=['Pclass'])),
-                ('impute_age',
-                 ImputeByGroup(col_to_impute='Age',
-                               group_by_col=['Pclass', 'Sex'],
-                               strategy='median')),
-                ('impute_cabin', FillCabin()),
-                ('impute_cabin_embarked', FillNA())]), 'feature': Pipeline(steps=[('Family_size', FeatFamilySize()), ('Is_solo', FeatIsSolo()),
-                ('Fare_bucket', FeatFareBucket()),
-                ('Age_bucket', FeatAgeBucket()), ('Deck', FeatDeck()),
-                ('Deck_missing', FeatDeckMissing()), ('Title', FeatTitle()),
-                ('Is_ticket_num', FeatIsTicketNum()),
-                ('Ticket_char_0', FeatTicketFirstChar())]), 'drop_unencoded': Pipeline(steps=[('drop',
-                 DropColumns(cols_to_drop=['PassengerId', 'Name', 'Ticket',
-                                           'Cabin', 'SibSp', 'Parch']))]), 'encode': ColumnTransformer(remainder='passthrough',
-                  transformers=[('hot_encode',
-                                 OneHotEncoder(handle_unknown='ignore',
-                                               sparse_output=False),
-                                 ['Sex', 'Embarked', 'Age_bucket', 'Title',
-                                  'Fare_bucket', 'Ticket_char_0', 'Deck'])],
-                  verbose_feature_names_out=False)}",0.8349946644906158,0.0146939032691231,0
-V_2,LR,"Impute:
+V_1,LR,"Impute:
 Pipeline(steps=[('impute_fare',
                  ImputeByGroup(col_to_impute='Fare', group_by_col=['Pclass'])),
                 ('impute_age',
                  ImputeByGroup(col_to_impute='Age',
                                group_by_col=['Pclass', 'Sex'],
                                strategy='median')),
-                ('impute_cabin', FillCabin()),
                 ('impute_cabin_embarked', FillNA())])
 
 Final Transformed Features:
 ['Survived' 'Pclass' 'Sex' 'Age' 'Fare' 'Embarked' 'Family_size' 'Is_solo'
- 'Deck' 'Deck_missing' 'Title' 'Is_adult']
+ 'Deck' 'Title']
 
 Encoded Columns:
 ['Sex', 'Embarked', 'Deck', 'Title']
 
 Scaler:
 StandardScaler() for non-tree models
-",0.8361245370660976,0.021828122135961,0
-V_3,LR,"Impute:
+",0.8305128366078713,0.0165721468199296,0
+V_2,RF,"Impute:
 Pipeline(steps=[('impute_fare',
                  ImputeByGroup(col_to_impute='Fare', group_by_col=['Pclass'])),
                 ('impute_age',
                  ImputeByGroup(col_to_impute='Age',
                                group_by_col=['Pclass', 'Sex'],
                                strategy='median')),
-                ('impute_cabin', FillCabin()),
                 ('impute_cabin_embarked', FillNA())])
 
 Final Transformed Features:
 ['Survived' 'Pclass' 'Sex' 'Age' 'Fare' 'Embarked' 'Family_size' 'Is_solo'
- 'Deck' 'Title' 'Is_adult']
+ 'Deck' 'Title']
 
 Encoded Columns:
 ['Sex', 'Embarked', 'Deck', 'Title']
 
 Scaler:
 StandardScaler() for non-tree models
-",0.8361245370660976,0.021828122135961,0
-V_4,LR,"Impute:
+",0.8383717280773336,0.0068166319873173,0
+V_3,XGB,"Impute:
 Pipeline(steps=[('impute_fare',
                  ImputeByGroup(col_to_impute='Fare', group_by_col=['Pclass'])),
                 ('impute_age',
                  ImputeByGroup(col_to_impute='Age',
                                group_by_col=['Pclass', 'Sex'],
                                strategy='median')),
-                ('impute_cabin', FillCabin()),
                 ('impute_cabin_embarked', FillNA())])
 
 Final Transformed Features:
 ['Survived' 'Pclass' 'Sex' 'Age' 'Fare' 'Embarked' 'Family_size' 'Is_solo'
- 'Deck' 'Title' 'Is_adult' 'Class_1_master' 'Class_3_male']
+ 'Deck' 'Title']
 
 Encoded Columns:
 ['Sex', 'Embarked', 'Deck', 'Title']
 
 Scaler:
 StandardScaler() for non-tree models
-",0.8406189190885694,0.0209665071053405,0
+",0.8316176009038981,0.0190369465577601,0
+V_4,LGB,"Impute:
+Pipeline(steps=[('impute_fare',
+                 ImputeByGroup(col_to_impute='Fare', group_by_col=['Pclass'])),
+                ('impute_age',
+                 ImputeByGroup(col_to_impute='Age',
+                               group_by_col=['Pclass', 'Sex'],
+                               strategy='median')),
+                ('impute_cabin_embarked', FillNA())])
+
+Final Transformed Features:
+['Survived' 'Pclass' 'Sex' 'Age' 'Fare' 'Embarked' 'Family_size' 'Is_solo'
+ 'Deck' 'Title']
+
+Encoded Columns:
+['Sex', 'Embarked', 'Deck', 'Title']
+
+Scaler:
+StandardScaler() for non-tree models
+",0.8417111292448685,0.0198364902529815,0
 V_5,LR,"Impute:
 Pipeline(steps=[('impute_fare',
                  ImputeByGroup(col_to_impute='Fare', group_by_col=['Pclass'])),
@@ -87,59 +82,56 @@ Pipeline(steps=[('impute_fare',
                  ImputeByGroup(col_to_impute='Age',
                                group_by_col=['Pclass', 'Sex'],
                                strategy='median')),
-                ('impute_cabin', FillCabin()),
                 ('impute_cabin_embarked', FillNA())])
 
 Final Transformed Features:
 ['Survived' 'Pclass' 'Sex' 'Age' 'Fare' 'Embarked' 'Family_size' 'Is_solo'
- 'Deck' 'Title' 'Is_adult' 'Class_1_master' 'Class_3_male' 'Fare_bucket']
+ 'Deck' 'Title' 'Fare_bucket']
 
 Encoded Columns:
 ['Sex', 'Embarked', 'Deck', 'Title', 'Fare_bucket']
 
 Scaler:
 StandardScaler() for non-tree models
-",0.8271483271608814,0.0237560400786832,0
-V_6,LR,"Impute:
+",0.8305191136777352,0.0165152917001445,0
+V_6,RF,"Impute:
 Pipeline(steps=[('impute_fare',
                  ImputeByGroup(col_to_impute='Fare', group_by_col=['Pclass'])),
                 ('impute_age',
                  ImputeByGroup(col_to_impute='Age',
                                group_by_col=['Pclass', 'Sex'],
                                strategy='median')),
-                ('impute_cabin', FillCabin()),
                 ('impute_cabin_embarked', FillNA())])
 
 Final Transformed Features:
 ['Survived' 'Pclass' 'Sex' 'Age' 'Fare' 'Embarked' 'Family_size' 'Is_solo'
- 'Deck' 'Title' 'Is_adult' 'Class_1_master' 'Class_3_male' 'Age_bucket']
+ 'Deck' 'Title' 'Fare_bucket']
 
 Encoded Columns:
-['Sex', 'Embarked', 'Deck', 'Title', 'Age_bucket']
+['Sex', 'Embarked', 'Deck', 'Title', 'Fare_bucket']
 
 Scaler:
 StandardScaler() for non-tree models
-",0.8338961772644531,0.0130763524071772,0
-V_7,LR,"Impute:
+",0.8383717280773334,0.0076870761836323,0
+V_7,XGB,"Impute:
 Pipeline(steps=[('impute_fare',
                  ImputeByGroup(col_to_impute='Fare', group_by_col=['Pclass'])),
                 ('impute_age',
                  ImputeByGroup(col_to_impute='Age',
                                group_by_col=['Pclass', 'Sex'],
                                strategy='median')),
-                ('impute_cabin', FillCabin()),
                 ('impute_cabin_embarked', FillNA())])
 
 Final Transformed Features:
 ['Survived' 'Pclass' 'Sex' 'Age' 'Fare' 'Embarked' 'Family_size' 'Is_solo'
- 'Deck' 'Title' 'Is_adult' 'Class_1_master' 'Class_3_male' 'Deck_missing']
+ 'Deck' 'Title' 'Fare_bucket']
 
 Encoded Columns:
-['Sex', 'Embarked', 'Deck', 'Title']
+['Sex', 'Embarked', 'Deck', 'Title', 'Fare_bucket']
 
 Scaler:
 StandardScaler() for non-tree models
-",0.8406189190885694,0.0209665071053405,0
+",0.8305128366078713,0.0187185486038848,0
 V_8,LR,"Impute:
 Pipeline(steps=[('impute_fare',
                  ImputeByGroup(col_to_impute='Fare', group_by_col=['Pclass'])),
@@ -147,19 +139,18 @@ Pipeline(steps=[('impute_fare',
                  ImputeByGroup(col_to_impute='Age',
                                group_by_col=['Pclass', 'Sex'],
                                strategy='median')),
-                ('impute_cabin', FillCabin()),
                 ('impute_cabin_embarked', FillNA())])
 
 Final Transformed Features:
 ['Survived' 'Pclass' 'Sex' 'Age' 'Fare' 'Embarked' 'Family_size' 'Is_solo'
- 'Deck' 'Title' 'Is_adult' 'Deck_missing']
+ 'Deck' 'Title']
 
 Encoded Columns:
 ['Sex', 'Embarked', 'Deck', 'Title']
 
 Scaler:
 StandardScaler() for non-tree models
-",0.8361245370660976,0.021828122135961,0
+",0.8305065595380077,0.0200654724337438,0
 V_9,LR,"Impute:
 Pipeline(steps=[('impute_fare',
                  ImputeByGroup(col_to_impute='Fare', group_by_col=['Pclass'])),
@@ -167,19 +158,18 @@ Pipeline(steps=[('impute_fare',
                  ImputeByGroup(col_to_impute='Age',
                                group_by_col=['Pclass', 'Sex'],
                                strategy='median')),
-                ('impute_cabin', FillCabin()),
                 ('impute_cabin_embarked', FillNA())])
 
 Final Transformed Features:
 ['Survived' 'Pclass' 'Sex' 'Age' 'Fare' 'Embarked' 'Family_size' 'Is_solo'
- 'Deck' 'Title' 'Is_adult' 'Class_1_master' 'Class_3_male' 'Deck_missing']
+ 'Deck' 'Title']
 
 Encoded Columns:
 ['Sex', 'Embarked', 'Deck', 'Title']
 
 Scaler:
 StandardScaler() for non-tree models
-",0.8406189190885694,0.0209665071053405,0
+",0.8327537505492437,0.0169776162849397,0
 V_10,LR,"Impute:
 Pipeline(steps=[('impute_fare',
                  ImputeByGroup(col_to_impute='Fare', group_by_col=['Pclass'])),
@@ -187,19 +177,18 @@ Pipeline(steps=[('impute_fare',
                  ImputeByGroup(col_to_impute='Age',
                                group_by_col=['Pclass', 'Sex'],
                                strategy='median')),
-                ('impute_cabin', FillCabin()),
                 ('impute_cabin_embarked', FillNA())])
 
 Final Transformed Features:
 ['Survived' 'Pclass' 'Sex' 'Age' 'Fare' 'Embarked' 'Family_size' 'Is_solo'
- 'Deck' 'Title' 'Is_adult' 'Class_1_master' 'Class_3_male' 'Is_ticket_num']
+ 'Deck' 'Title' 'Fare_bucket']
 
 Encoded Columns:
-['Sex', 'Embarked', 'Deck', 'Title']
+['Sex', 'Embarked', 'Deck', 'Title', 'Fare_bucket']
 
 Scaler:
 StandardScaler() for non-tree models
-",0.8350134957002073,0.0215177497150844,0
+",0.8282719226664993,0.0122413742114764,0
 V_11,LR,"Impute:
 Pipeline(steps=[('impute_fare',
                  ImputeByGroup(col_to_impute='Fare', group_by_col=['Pclass'])),
@@ -207,19 +196,18 @@ Pipeline(steps=[('impute_fare',
                  ImputeByGroup(col_to_impute='Age',
                                group_by_col=['Pclass', 'Sex'],
                                strategy='median')),
-                ('impute_cabin', FillCabin()),
                 ('impute_cabin_embarked', FillNA())])
 
 Final Transformed Features:
 ['Survived' 'Pclass' 'Sex' 'Age' 'Fare' 'Embarked' 'Family_size' 'Is_solo'
- 'Deck' 'Title' 'Is_adult' 'Class_1_master' 'Class_3_male' 'Ticket_char_0']
+ 'Deck' 'Title' 'Age_bucket']
 
 Encoded Columns:
-['Sex', 'Embarked', 'Deck', 'Title', 'Ticket_char_0']
+['Sex', 'Embarked', 'Deck', 'Title', 'Age_bucket']
 
 Scaler:
 StandardScaler() for non-tree models
-",0.8338710689849979,0.0167152890027045,0
+",0.8293829640323898,0.0159384111631226,0
 V_12,LR,"Impute:
 Pipeline(steps=[('impute_fare',
                  ImputeByGroup(col_to_impute='Fare', group_by_col=['Pclass'])),
@@ -227,19 +215,18 @@ Pipeline(steps=[('impute_fare',
                  ImputeByGroup(col_to_impute='Age',
                                group_by_col=['Pclass', 'Sex'],
                                strategy='median')),
-                ('impute_cabin', FillCabin()),
                 ('impute_cabin_embarked', FillNA())])
 
 Final Transformed Features:
 ['Survived' 'Pclass' 'Sex' 'Age' 'Fare' 'Embarked' 'Family_size' 'Is_solo'
- 'Deck' 'Title' 'Is_adult' 'Class_1_master' 'Class_3_male']
+ 'Deck' 'Title' 'Age_bucket']
 
 Encoded Columns:
-['Sex', 'Embarked', 'Deck', 'Title']
+['Sex', 'Embarked', 'Deck', 'Title', 'Age_bucket']
 
 Scaler:
 StandardScaler() for non-tree models
-",0.8406189190885694,0.0209665071053405,0
+",0.8305191136777351,0.0135787399902833,0
 V_13,LR,"Impute:
 Pipeline(steps=[('impute_fare',
                  ImputeByGroup(col_to_impute='Fare', group_by_col=['Pclass'])),
@@ -247,19 +234,18 @@ Pipeline(steps=[('impute_fare',
                  ImputeByGroup(col_to_impute='Age',
                                group_by_col=['Pclass', 'Sex'],
                                strategy='median')),
-                ('impute_cabin', FillCabin()),
                 ('impute_cabin_embarked', FillNA())])
 
 Final Transformed Features:
 ['Survived' 'Pclass' 'Sex' 'Age' 'Fare' 'Embarked' 'Family_size' 'Is_solo'
- 'Age_bucket' 'Deck' 'Title' 'Class_1_master' 'Class_3_male']
+ 'Deck' 'Title' 'Deck_missing']
 
 Encoded Columns:
-['Sex', 'Embarked', 'Age_bucket', 'Deck', 'Title']
+['Sex', 'Embarked', 'Deck', 'Title']
 
 Scaler:
 StandardScaler() for non-tree models
-",0.8338961772644531,0.0130763524071772,0
+",0.8305128366078713,0.0165721468199296,0
 V_14,LR,"Impute:
 Pipeline(steps=[('impute_fare',
                  ImputeByGroup(col_to_impute='Fare', group_by_col=['Pclass'])),
@@ -267,19 +253,18 @@ Pipeline(steps=[('impute_fare',
                  ImputeByGroup(col_to_impute='Age',
                                group_by_col=['Pclass', 'Sex'],
                                strategy='median')),
-                ('impute_cabin', FillCabin()),
                 ('impute_cabin_embarked', FillNA())])
 
 Final Transformed Features:
 ['Survived' 'Pclass' 'Sex' 'Age' 'Fare' 'Embarked' 'Family_size' 'Is_solo'
- 'Age_bucket' 'Deck' 'Title' 'Class_1_master' 'Class_3_male']
+ 'Deck' 'Title' 'Deck_missing']
 
 Encoded Columns:
-['Sex', 'Embarked', 'Age_bucket', 'Deck', 'Title']
+['Sex', 'Embarked', 'Deck', 'Title']
 
 Scaler:
 StandardScaler() for non-tree models
-",0.8338961772644531,0.0130763524071772,0
+",0.8316301550436256,0.0156747069316987,0
 V_15,LR,"Impute:
 Pipeline(steps=[('impute_fare',
                  ImputeByGroup(col_to_impute='Fare', group_by_col=['Pclass'])),
@@ -287,87 +272,80 @@ Pipeline(steps=[('impute_fare',
                  ImputeByGroup(col_to_impute='Age',
                                group_by_col=['Pclass', 'Sex'],
                                strategy='median')),
-                ('impute_cabin', FillCabin()),
                 ('impute_cabin_embarked', FillNA())])
 
 Final Transformed Features:
 ['Survived' 'Pclass' 'Sex' 'Age' 'Fare' 'Embarked' 'Family_size' 'Is_solo'
- 'Deck' 'Title']
+ 'Deck' 'Title' 'Deck_missing']
 
 Encoded Columns:
 ['Sex', 'Embarked', 'Deck', 'Title']
 
 Scaler:
 StandardScaler() for non-tree models
-",0.8361370912058252,0.0211531293903244,0
-V_16,SVM rbf,"Impute:
+",0.8316301550436256,0.0156747069316987,0
+V_16,LR,"Impute:
 Pipeline(steps=[('impute_fare',
                  ImputeByGroup(col_to_impute='Fare', group_by_col=['Pclass'])),
                 ('impute_age',
                  ImputeByGroup(col_to_impute='Age',
                                group_by_col=['Pclass', 'Sex'],
                                strategy='median')),
-                ('impute_cabin', FillCabin()),
                 ('impute_cabin_embarked', FillNA())])
 
 Final Transformed Features:
-['Survived' 'Pclass' 'Sex' 'Age' 'Fare' 'Embarked' 'Family_size' 'Is_solo'
- 'Deck' 'Title']
+['Survived' 'Pclass' 'Sex' 'Age' 'Fare' 'Embarked' 'Family_size']
 
 Encoded Columns:
-['Sex', 'Embarked', 'Deck', 'Title']
+['Sex', 'Embarked']
 
 Scaler:
 StandardScaler() for non-tree models
-",0.8305065595380077,0.0132430792924171,0
-V_17,SVM rbf,"Impute:
+",0.7968614650681063,0.0129343986242659,0
+V_17,LR,"Impute:
 Pipeline(steps=[('impute_fare',
                  ImputeByGroup(col_to_impute='Fare', group_by_col=['Pclass'])),
                 ('impute_age',
                  ImputeByGroup(col_to_impute='Age',
                                group_by_col=['Pclass', 'Sex'],
                                strategy='median')),
-                ('impute_cabin', FillCabin()),
                 ('impute_cabin_embarked', FillNA())])
 
 Final Transformed Features:
-['Survived' 'Pclass' 'Sex' 'Age' 'Fare' 'Embarked' 'Family_size' 'Is_solo'
- 'Deck' 'Title']
+['Survived' 'Pclass' 'Sex' 'Age' 'Fare' 'Embarked' 'Family_size' 'Is_solo']
 
 Encoded Columns:
-['Sex', 'Embarked', 'Deck', 'Title']
+['Sex', 'Embarked']
 
 Scaler:
 StandardScaler() for non-tree models
-",0.8316301550436256,0.0139713193000821,0
-V_18,SVM rbf,"Impute:
+",0.8047329106772958,0.0226784601027804,0
+V_18,LR,"Impute:
 Pipeline(steps=[('impute_fare',
                  ImputeByGroup(col_to_impute='Fare', group_by_col=['Pclass'])),
                 ('impute_age',
                  ImputeByGroup(col_to_impute='Age',
                                group_by_col=['Pclass', 'Sex'],
                                strategy='median')),
-                ('impute_cabin', FillCabin()),
                 ('impute_cabin_embarked', FillNA())])
 
 Final Transformed Features:
 ['Survived' 'Pclass' 'Sex' 'Age' 'Fare' 'Embarked' 'Family_size' 'Is_solo'
- 'Deck' 'Title']
+ 'Deck']
 
 Encoded Columns:
-['Sex', 'Embarked', 'Deck', 'Title']
+['Sex', 'Embarked', 'Deck']
 
 Scaler:
 StandardScaler() for non-tree models
-",0.8316301550436256,0.0139713193000821,0
-V_19,SVM lin,"Impute:
+",0.8069612704789405,0.0257443106333465,0
+V_19,LR,"Impute:
 Pipeline(steps=[('impute_fare',
                  ImputeByGroup(col_to_impute='Fare', group_by_col=['Pclass'])),
                 ('impute_age',
                  ImputeByGroup(col_to_impute='Age',
                                group_by_col=['Pclass', 'Sex'],
                                strategy='median')),
-                ('impute_cabin', FillCabin()),
                 ('impute_cabin_embarked', FillNA())])
 
 Final Transformed Features:
@@ -379,7 +357,7 @@ Encoded Columns:
 
 Scaler:
 StandardScaler() for non-tree models
-",0.8249074132195091,0.0153288873556562,0
+",0.8327537505492437,0.0169776162849397,0
 V_20,LR,"Impute:
 Pipeline(steps=[('impute_fare',
                  ImputeByGroup(col_to_impute='Fare', group_by_col=['Pclass'])),
@@ -387,7 +365,6 @@ Pipeline(steps=[('impute_fare',
                  ImputeByGroup(col_to_impute='Age',
                                group_by_col=['Pclass', 'Sex'],
                                strategy='median')),
-                ('impute_cabin', FillCabin()),
                 ('impute_cabin_embarked', FillNA())])
 
 Final Transformed Features:
@@ -399,15 +376,14 @@ Encoded Columns:
 
 Scaler:
 StandardScaler() for non-tree models
-",0.8361370912058252,0.0211531293903244,0
-V_21,SVM rbf,"Impute:
+",0.8327537505492437,0.0169776162849397,0
+V_21,LR,"Impute:
 Pipeline(steps=[('impute_fare',
                  ImputeByGroup(col_to_impute='Fare', group_by_col=['Pclass'])),
                 ('impute_age',
                  ImputeByGroup(col_to_impute='Age',
                                group_by_col=['Pclass', 'Sex'],
                                strategy='median')),
-                ('impute_cabin', FillCabin()),
                 ('impute_cabin_embarked', FillNA())])
 
 Final Transformed Features:
@@ -419,15 +395,14 @@ Encoded Columns:
 
 Scaler:
 StandardScaler() for non-tree models
-",0.8316301550436256,0.0139713193000821,0
-V_22,SVM lin,"Impute:
+",0.8327537505492437,0.0169776162849397,0
+V_22,LR,"Impute:
 Pipeline(steps=[('impute_fare',
                  ImputeByGroup(col_to_impute='Fare', group_by_col=['Pclass'])),
                 ('impute_age',
                  ImputeByGroup(col_to_impute='Age',
                                group_by_col=['Pclass', 'Sex'],
                                strategy='median')),
-                ('impute_cabin', FillCabin()),
                 ('impute_cabin_embarked', FillNA())])
 
 Final Transformed Features:
@@ -439,7 +414,7 @@ Encoded Columns:
 
 Scaler:
 StandardScaler() for non-tree models
-",0.8249074132195091,0.0153288873556562,0
+",0.8327537505492437,0.0169776162849397,0
 V_23,LR,"Impute:
 Pipeline(steps=[('impute_fare',
                  ImputeByGroup(col_to_impute='Fare', group_by_col=['Pclass'])),
@@ -447,7 +422,6 @@ Pipeline(steps=[('impute_fare',
                  ImputeByGroup(col_to_impute='Age',
                                group_by_col=['Pclass', 'Sex'],
                                strategy='median')),
-                ('impute_cabin', FillCabin()),
                 ('impute_cabin_embarked', FillNA())])
 
 Final Transformed Features:
@@ -459,15 +433,14 @@ Encoded Columns:
 
 Scaler:
 StandardScaler() for non-tree models
-",0.8361370912058252,0.0211531293903244,0
-V_24,SVM rbf,"Impute:
+",0.8327537505492437,0.0169776162849397,0
+V_24,LR,"Impute:
 Pipeline(steps=[('impute_fare',
                  ImputeByGroup(col_to_impute='Fare', group_by_col=['Pclass'])),
                 ('impute_age',
                  ImputeByGroup(col_to_impute='Age',
                                group_by_col=['Pclass', 'Sex'],
                                strategy='median')),
-                ('impute_cabin', FillCabin()),
                 ('impute_cabin_embarked', FillNA())])
 
 Final Transformed Features:
@@ -479,67 +452,67 @@ Encoded Columns:
 
 Scaler:
 StandardScaler() for non-tree models
-",0.8316301550436256,0.0139713193000821,0
-V_25,SVM lin,"Impute:
+",0.8327537505492437,0.0169776162849397,0
+V_25,LR,"Impute:
 Pipeline(steps=[('impute_fare',
                  ImputeByGroup(col_to_impute='Fare', group_by_col=['Pclass'])),
                 ('impute_age',
                  ImputeByGroup(col_to_impute='Age',
                                group_by_col=['Pclass', 'Sex'],
                                strategy='median')),
-                ('impute_cabin', FillCabin()),
                 ('impute_cabin_embarked', FillNA())])
 
 Final Transformed Features:
 ['Survived' 'Pclass' 'Sex' 'Age' 'Fare' 'Embarked' 'Family_size' 'Is_solo'
- 'Deck' 'Title']
+ 'Deck' 'Title' 'Fare_bucket' 'Age_bucket' 'Deck_missing' 'Is_ticket_num'
+ 'Ticket_char_0' 'Is_adult' 'Class_1_master' 'Class_3_male']
 
 Encoded Columns:
-['Sex', 'Embarked', 'Deck', 'Title']
+['Sex', 'Embarked', 'Deck', 'Title', 'Fare_bucket', 'Age_bucket', 'Ticket_char_0']
 
 Scaler:
 StandardScaler() for non-tree models
-",0.8249074132195091,0.0153288873556562,0
-V_26,RF,"Impute:
+",0.8405938108091144,0.018221815943547,0
+V_26,LR,"Impute:
 Pipeline(steps=[('impute_fare',
                  ImputeByGroup(col_to_impute='Fare', group_by_col=['Pclass'])),
                 ('impute_age',
                  ImputeByGroup(col_to_impute='Age',
                                group_by_col=['Pclass', 'Sex'],
                                strategy='median')),
-                ('impute_cabin', FillCabin()),
                 ('impute_cabin_embarked', FillNA())])
 
 Final Transformed Features:
 ['Survived' 'Pclass' 'Sex' 'Age' 'Fare' 'Embarked' 'Family_size' 'Is_solo'
- 'Deck' 'Title']
+ 'Deck' 'Title' 'Fare_bucket' 'Age_bucket' 'Deck_missing' 'Is_ticket_num'
+ 'Ticket_char_0' 'Is_adult']
 
 Encoded Columns:
-['Sex', 'Embarked', 'Deck', 'Title']
+['Sex', 'Embarked', 'Deck', 'Title', 'Fare_bucket', 'Age_bucket', 'Ticket_char_0']
 
 Scaler:
 StandardScaler() for non-tree models
-",0.8350009415604795,0.014637440519975,0
-V_27,XGB,"Impute:
+",0.83611198292637,0.0166634913499353,0
+V_27,LR,"Impute:
 Pipeline(steps=[('impute_fare',
                  ImputeByGroup(col_to_impute='Fare', group_by_col=['Pclass'])),
                 ('impute_age',
                  ImputeByGroup(col_to_impute='Age',
                                group_by_col=['Pclass', 'Sex'],
                                strategy='median')),
-                ('impute_cabin', FillCabin()),
                 ('impute_cabin_embarked', FillNA())])
 
 Final Transformed Features:
 ['Survived' 'Pclass' 'Sex' 'Age' 'Fare' 'Embarked' 'Family_size' 'Is_solo'
- 'Deck' 'Title']
+ 'Deck' 'Title' 'Fare_bucket' 'Age_bucket' 'Deck_missing' 'Is_ticket_num'
+ 'Ticket_char_0' 'Is_adult' 'Class_1_master' 'Class_3_male']
 
 Encoded Columns:
-['Sex', 'Embarked', 'Deck', 'Title']
+['Sex', 'Embarked', 'Deck', 'Title', 'Fare_bucket', 'Age_bucket', 'Ticket_char_0']
 
 Scaler:
 StandardScaler() for non-tree models
-",0.8327788588286987,0.0251756049220645,0
+",0.8405938108091144,0.018221815943547,0
 V_28,LR,"Impute:
 Pipeline(steps=[('impute_fare',
                  ImputeByGroup(col_to_impute='Fare', group_by_col=['Pclass'])),
@@ -547,7 +520,45 @@ Pipeline(steps=[('impute_fare',
                  ImputeByGroup(col_to_impute='Age',
                                group_by_col=['Pclass', 'Sex'],
                                strategy='median')),
-                ('impute_cabin', FillCabin()),
+                ('impute_cabin_embarked', FillNA())])
+
+Final Transformed Features:
+['Survived' 'Pclass' 'Sex' 'Age' 'Fare' 'Embarked' 'Family_size' 'Is_solo'
+ 'Deck' 'Title']
+
+Encoded Columns:
+['Sex', 'Embarked', 'Deck', 'Title']
+
+Scaler:
+StandardScaler() for non-tree models
+",0.8327537505492437,0.0169776162849397,0
+V_29,LR,"Impute:
+Pipeline(steps=[('impute_fare',
+                 ImputeByGroup(col_to_impute='Fare', group_by_col=['Pclass'])),
+                ('impute_age',
+                 ImputeByGroup(col_to_impute='Age',
+                               group_by_col=['Pclass', 'Sex'],
+                               strategy='median')),
+                ('impute_cabin_embarked', FillNA())])
+
+Final Transformed Features:
+['Survived' 'Pclass' 'Sex' 'Age' 'Fare' 'Embarked' 'Family_size' 'Is_solo'
+ 'Deck' 'Title' 'Fare_bucket' 'Age_bucket' 'Deck_missing' 'Is_ticket_num'
+ 'Ticket_char_0' 'Is_adult']
+
+Encoded Columns:
+['Sex', 'Embarked', 'Deck', 'Title', 'Fare_bucket', 'Age_bucket', 'Ticket_char_0']
+
+Scaler:
+StandardScaler() for non-tree models
+",0.83611198292637,0.0166634913499353,0
+V_30,LR,"Impute:
+Pipeline(steps=[('impute_fare',
+                 ImputeByGroup(col_to_impute='Fare', group_by_col=['Pclass'])),
+                ('impute_age',
+                 ImputeByGroup(col_to_impute='Age',
+                               group_by_col=['Pclass', 'Sex'],
+                               strategy='median')),
                 ('impute_cabin_embarked', FillNA())])
 
 Final Transformed Features:
@@ -559,224 +570,4 @@ Encoded Columns:
 
 Scaler:
 StandardScaler() for non-tree models
-",0.8383717280773334,0.0193573721179864,0
-V_29,SVM rbf,"Impute:
-Pipeline(steps=[('impute_fare',
-                 ImputeByGroup(col_to_impute='Fare', group_by_col=['Pclass'])),
-                ('impute_age',
-                 ImputeByGroup(col_to_impute='Age',
-                               group_by_col=['Pclass', 'Sex'],
-                               strategy='median')),
-                ('impute_cabin', FillCabin()),
-                ('impute_cabin_embarked', FillNA())])
-
-Final Transformed Features:
-['Survived' 'Pclass' 'Sex' 'Age' 'Fare' 'Embarked' 'Family_size' 'Is_solo'
- 'Deck' 'Title' 'Class_1_master' 'Class_3_male']
-
-Encoded Columns:
-['Sex', 'Embarked', 'Deck', 'Title']
-
-Scaler:
-StandardScaler() for non-tree models
-",0.8327474734793798,0.0154715447536903,0
-V_30,SVM lin,"Impute:
-Pipeline(steps=[('impute_fare',
-                 ImputeByGroup(col_to_impute='Fare', group_by_col=['Pclass'])),
-                ('impute_age',
-                 ImputeByGroup(col_to_impute='Age',
-                               group_by_col=['Pclass', 'Sex'],
-                               strategy='median')),
-                ('impute_cabin', FillCabin()),
-                ('impute_cabin_embarked', FillNA())])
-
-Final Transformed Features:
-['Survived' 'Pclass' 'Sex' 'Age' 'Fare' 'Embarked' 'Family_size' 'Is_solo'
- 'Deck' 'Title' 'Class_1_master' 'Class_3_male']
-
-Encoded Columns:
-['Sex', 'Embarked', 'Deck', 'Title']
-
-Scaler:
-StandardScaler() for non-tree models
-",0.8249074132195091,0.0121079357177536,0
-V_31,RF,"Impute:
-Pipeline(steps=[('impute_fare',
-                 ImputeByGroup(col_to_impute='Fare', group_by_col=['Pclass'])),
-                ('impute_age',
-                 ImputeByGroup(col_to_impute='Age',
-                               group_by_col=['Pclass', 'Sex'],
-                               strategy='median')),
-                ('impute_cabin', FillCabin()),
-                ('impute_cabin_embarked', FillNA())])
-
-Final Transformed Features:
-['Survived' 'Pclass' 'Sex' 'Age' 'Fare' 'Embarked' 'Family_size' 'Is_solo'
- 'Deck' 'Title' 'Class_1_master' 'Class_3_male']
-
-Encoded Columns:
-['Sex', 'Embarked', 'Deck', 'Title']
-
-Scaler:
-StandardScaler() for non-tree models
-",0.8350072186303434,0.0111393497976867,0
-V_32,XGB,"Impute:
-Pipeline(steps=[('impute_fare',
-                 ImputeByGroup(col_to_impute='Fare', group_by_col=['Pclass'])),
-                ('impute_age',
-                 ImputeByGroup(col_to_impute='Age',
-                               group_by_col=['Pclass', 'Sex'],
-                               strategy='median')),
-                ('impute_cabin', FillCabin()),
-                ('impute_cabin_embarked', FillNA())])
-
-Final Transformed Features:
-['Survived' 'Pclass' 'Sex' 'Age' 'Fare' 'Embarked' 'Family_size' 'Is_solo'
- 'Deck' 'Title' 'Class_1_master' 'Class_3_male']
-
-Encoded Columns:
-['Sex', 'Embarked', 'Deck', 'Title']
-
-Scaler:
-StandardScaler() for non-tree models
-",0.8383780051471973,0.0152969706974581,0
-V_33,LR,"Impute:
-Pipeline(steps=[('impute_fare',
-                 ImputeByGroup(col_to_impute='Fare', group_by_col=['Pclass'])),
-                ('impute_age',
-                 ImputeByGroup(col_to_impute='Age',
-                               group_by_col=['Pclass', 'Sex'],
-                               strategy='median')),
-                ('impute_cabin', FillCabin()),
-                ('impute_cabin_embarked', FillNA())])
-
-Final Transformed Features:
-['Survived' 'Pclass' 'Sex' 'Age' 'Fare' 'Embarked' 'Family_size' 'Is_solo'
- 'Deck' 'Title' 'Is_adult' 'Class_1_master' 'Class_3_male']
-
-Encoded Columns:
-['Sex', 'Embarked', 'Deck', 'Title']
-
-Scaler:
-StandardScaler() for non-tree models
-",0.8406189190885694,0.0209665071053405,0
-V_34,SVM rbf,"Impute:
-Pipeline(steps=[('impute_fare',
-                 ImputeByGroup(col_to_impute='Fare', group_by_col=['Pclass'])),
-                ('impute_age',
-                 ImputeByGroup(col_to_impute='Age',
-                               group_by_col=['Pclass', 'Sex'],
-                               strategy='median')),
-                ('impute_cabin', FillCabin()),
-                ('impute_cabin_embarked', FillNA())])
-
-Final Transformed Features:
-['Survived' 'Pclass' 'Sex' 'Age' 'Fare' 'Embarked' 'Family_size' 'Is_solo'
- 'Deck' 'Title' 'Is_adult' 'Class_1_master' 'Class_3_male']
-
-Encoded Columns:
-['Sex', 'Embarked', 'Deck', 'Title']
-
-Scaler:
-StandardScaler() for non-tree models
-",0.8327474734793799,0.0146328179056717,0
-V_35,SVM lin,"Impute:
-Pipeline(steps=[('impute_fare',
-                 ImputeByGroup(col_to_impute='Fare', group_by_col=['Pclass'])),
-                ('impute_age',
-                 ImputeByGroup(col_to_impute='Age',
-                               group_by_col=['Pclass', 'Sex'],
-                               strategy='median')),
-                ('impute_cabin', FillCabin()),
-                ('impute_cabin_embarked', FillNA())])
-
-Final Transformed Features:
-['Survived' 'Pclass' 'Sex' 'Age' 'Fare' 'Embarked' 'Family_size' 'Is_solo'
- 'Deck' 'Title' 'Is_adult' 'Class_1_master' 'Class_3_male']
-
-Encoded Columns:
-['Sex', 'Embarked', 'Deck', 'Title']
-
-Scaler:
-StandardScaler() for non-tree models
-",0.8260310087251271,0.0138429672059435,0
-V_36,RF,"Impute:
-Pipeline(steps=[('impute_fare',
-                 ImputeByGroup(col_to_impute='Fare', group_by_col=['Pclass'])),
-                ('impute_age',
-                 ImputeByGroup(col_to_impute='Age',
-                               group_by_col=['Pclass', 'Sex'],
-                               strategy='median')),
-                ('impute_cabin', FillCabin()),
-                ('impute_cabin_embarked', FillNA())])
-
-Final Transformed Features:
-['Survived' 'Pclass' 'Sex' 'Age' 'Fare' 'Embarked' 'Family_size' 'Is_solo'
- 'Deck' 'Title' 'Is_adult' 'Class_1_master' 'Class_3_male']
-
-Encoded Columns:
-['Sex', 'Embarked', 'Deck', 'Title']
-
-Scaler:
-StandardScaler() for non-tree models
-",0.830500282468144,0.0150823581963062,0
-V_37,XGB,"Impute:
-Pipeline(steps=[('impute_fare',
-                 ImputeByGroup(col_to_impute='Fare', group_by_col=['Pclass'])),
-                ('impute_age',
-                 ImputeByGroup(col_to_impute='Age',
-                               group_by_col=['Pclass', 'Sex'],
-                               strategy='median')),
-                ('impute_cabin', FillCabin()),
-                ('impute_cabin_embarked', FillNA())])
-
-Final Transformed Features:
-['Survived' 'Pclass' 'Sex' 'Age' 'Fare' 'Embarked' 'Family_size' 'Is_solo'
- 'Deck' 'Title' 'Is_adult' 'Class_1_master' 'Class_3_male']
-
-Encoded Columns:
-['Sex', 'Embarked', 'Deck', 'Title']
-
-Scaler:
-StandardScaler() for non-tree models
-",0.8305253907475991,0.0065946108512512,0
-V_38,SVM rbf,"Impute:
-Pipeline(steps=[('impute_fare',
-                 ImputeByGroup(col_to_impute='Fare', group_by_col=['Pclass'])),
-                ('impute_age',
-                 ImputeByGroup(col_to_impute='Age',
-                               group_by_col=['Pclass', 'Sex'],
-                               strategy='median')),
-                ('impute_cabin', FillCabin()),
-                ('impute_cabin_embarked', FillNA())])
-
-Final Transformed Features:
-['Survived' 'Pclass' 'Sex' 'Age' 'Fare' 'Embarked' 'Family_size' 'Is_solo'
- 'Deck' 'Title' 'Is_adult' 'Class_1_master' 'Class_3_male']
-
-Encoded Columns:
-['Sex', 'Embarked', 'Deck', 'Title']
-
-Scaler:
-StandardScaler() for non-tree models
-",0.8226727763480008,0.021770304518591,0
-V_39,SVM rbf,"Impute:
-Pipeline(steps=[('impute_fare',
-                 ImputeByGroup(col_to_impute='Fare', group_by_col=['Pclass'])),
-                ('impute_age',
-                 ImputeByGroup(col_to_impute='Age',
-                               group_by_col=['Pclass', 'Sex'],
-                               strategy='median')),
-                ('impute_cabin', FillCabin()),
-                ('impute_cabin_embarked', FillNA())])
-
-Final Transformed Features:
-['Survived' 'Pclass' 'Sex' 'Age' 'Fare' 'Embarked' 'Family_size' 'Is_solo'
- 'Deck' 'Title' 'Is_adult' 'Class_1_master' 'Class_3_male']
-
-Encoded Columns:
-['Sex', 'Embarked', 'Deck', 'Title']
-
-Scaler:
-StandardScaler() for non-tree models
-",0.8327474734793799,0.014632817905671712,0
+",0.8316301550436256,0.018619714987459873,0
