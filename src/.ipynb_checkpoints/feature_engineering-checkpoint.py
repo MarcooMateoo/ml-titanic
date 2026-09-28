@@ -13,10 +13,10 @@
 
 
 # Interaction features
-#  a. Class_1_female
-#  b. Class_2_male
-#  c. Class_2_female
-#  d. Class_3_male
+#  a. [Hurt] Class_1_female 
+#  b. [Hurt] Class_2_male 
+#  c. [Hurt] Class_2_female 
+#  d. [Gain] Class_3_male
 #  e. Embarked_S_male
 #  f. Embarked_S_female
 #  g. Embarked_C_c3
@@ -31,7 +31,7 @@
 #  p. Class_3_Solo
 #  q. Male_Solo
 #  r. Embarked_S_Solo
-#  s. Class_1_master
+#  s. [Gain] Class_1_master
 
 
 
@@ -251,6 +251,49 @@ class DropColumns(BaseEstimator, TransformerMixin):
         return np.asarray(self.feature_names_out_)
 
 
+# FILL CABIN IMPUTATION
+#  a. [Hurt] Class_1_female 
+#  b. [Hurt] Class_2_male 
+#  c. [Hurt] Class_2_female 
+#  d. [Gain] Class_3_male
+#  e. [Hurt] Embarked_S_male
+#  f. [Hurt] Embarked_S_female
+#  g. [Hurt] Embarked_C_c3
+#  h. [Hurt] Embarked_S_Age_21-30
+#  i. [Gain] Class_3_Age_21-30
+#  j. [Hurt] Male_Age_21-30
+#  k. [Hurt] Female_Age_21-30
+#  l. [Gain] Female_Age_31-40
+#  m. Class_3_Deck_U
+#  n. Male_Deck_U
+#  o. Embarked_S_Deck_U
+#  p. [Hurt] Class_3_Solo
+#  q. [Hurt] Male_Solo
+#  r. [Hurt] Embarked_S_Solo
+#  s. [Gain] Class_1_master
+
+
+# NO FILL CABIN IMPUTATION
+#  a. [Gain] Class_1_female 
+#  b. [Hurt] Class_2_male 
+#  c. [Hurt] Class_2_female 
+#  d. [Gain] Class_3_male
+#  e. [Hurt] Embarked_S_male
+#  f. [Hurt] Embarked_S_female
+#  g. [Hurt] Embarked_C_c3
+#  h. [Hurt] Embarked_S_Age_21-30
+#  i. [Hurt] Class_3_Age_21-30
+#  j. [Gain] Male_Age_21-30
+#  k. [Gain] Female_Age_21-30
+#  l. [Gain] Female_Age_31-40
+#  m. [Hurt] Class_3_Deck_U
+#  n. [Hurt] Male_Deck_U
+#  o. [Hurt] Embarked_S_Deck_U
+#  p. [Gain] Class_3_Solo
+#  q. [Hurt] Male_Solo
+#  r. [Hurt] Embarked_S_Solo
+#  s. [Hurt] Class_1_master
+
 class FeatInteraction(BaseEstimator, TransformerMixin):
     def fit(self, X, y=None):
          # as per sklearn convention, get feature name out should return numpy list
@@ -260,8 +303,12 @@ class FeatInteraction(BaseEstimator, TransformerMixin):
 
     def transform(self, X):
         X = X.copy()
-        X['Class_1_master'] = ((X['Pclass'] == 1) & (X['Title'] == 'Master'))
-        X['Class_3_male'] = ((X['Sex'] == 'male') & (X['Pclass'] == 3))
+        X['Class_3_male'] = ((X['Sex'] == 'male') & (X['Pclass'] == 3)) 
+        X['Class_1_female'] = ((X['Sex'] == 'female') & (X['Pclass'] == 1))
+        X['Male_Age_21-30'] = ((X['Sex'] == 'male') & (X['Age'] >= 21) & (X['Age'] <= 30))
+        X['Female_Age_21-30'] = ((X['Sex'] == 'female') & (X['Age'] >= 21) & (X['Age'] <= 30))
+        X['Female_Age_31-40'] = ((X['Sex'] == 'female') & (X['Age'] >= 31) & (X['Age'] <= 40))
+        X['Class_3_Solo'] = ((X['Pclass'] == 3) & (X['Is_solo'] == True)) 
         return X
 
     def get_feature_names_out(self, input_features=None):
